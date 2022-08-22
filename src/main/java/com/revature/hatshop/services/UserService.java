@@ -1,5 +1,6 @@
 package com.revature.hatshop.services;
 
+import com.revature.hatshop.daos.OrderDAO;
 import com.revature.hatshop.daos.UserDAO;
 import com.revature.hatshop.models.User;
 import com.revature.hatshop.utils.custom_exceptions.InvalidUserException;
@@ -13,6 +14,7 @@ public class UserService {
 
     public void register(User user) {
         userDAO.save(user);
+
     }
 
     public User login(String username, String password) {

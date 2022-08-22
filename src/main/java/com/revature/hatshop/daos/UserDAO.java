@@ -26,6 +26,19 @@ public class UserDAO implements CrudDAO<User> {
             throw new InvalidSQLException("An error occurred when tyring to save to the database.");
         }
     }
+    public void saveItem(User obj) {
+        try (Connection con = ConnectionFactory.getInstance().getConnection()) {
+            PreparedStatement ps = con.prepareStatement("INSERT INTO users (id, username, password, role, email) VALUES (?, ?, ?, ?, ?)");
+            ps.setString(1, obj.getId());
+            ps.setString(2, obj.getUsername());
+            ps.setString(3, obj.getPassword());
+            ps.setString(4, obj.getRole());
+            ps.setString(5, obj.getEmail());
+            ps.executeUpdate();
+        } catch (SQLException e) {
+            throw new InvalidSQLException("An error occurred when tyring to save to the database.");
+        }
+    }
 
     @Override
     public void update(User obj) {
