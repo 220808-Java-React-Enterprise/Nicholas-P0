@@ -1,6 +1,8 @@
 package com.revature.hatshop.ui;
 
+import com.revature.hatshop.daos.OrderDAO;
 import com.revature.hatshop.daos.UserDAO;
+import com.revature.hatshop.models.Order;
 import com.revature.hatshop.models.User;
 import com.revature.hatshop.services.UserService;
 import com.revature.hatshop.utils.custom_exceptions.InvalidUserException;
@@ -38,6 +40,7 @@ public class LoginMenu implements IMenu {
                     case "2":
                         User user = signup();
                         userService.register(user);
+                        new OrderDAO().createOrder(new Order("1",user.getId()));
                         new MainMenu(user, new UserService(new UserDAO())).start();
                         break;
                     case "x":

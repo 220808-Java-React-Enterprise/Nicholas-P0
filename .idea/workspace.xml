@@ -5,21 +5,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a5a7effc-4e79-4434-b893-054ce873eb19" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/revature/hatshop/daos/ItemDAO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/revature/hatshop/daos/OrderDAO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/revature/hatshop/daos/OrderElementDAO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/revature/hatshop/models/Item.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/revature/hatshop/models/Order.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/revature/hatshop/models/OrderElement.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/revature/hatshop/services/ItemService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/revature/hatshop/services/OrderService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/revature/hatshop/ui/OrderMenu.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/revature/hatshop/daos/UserDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/revature/hatshop/daos/UserDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/revature/hatshop/services/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/revature/hatshop/services/UserService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/revature/hatshop/daos/OrderDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/revature/hatshop/daos/OrderDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/revature/hatshop/models/Order.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/revature/hatshop/models/Order.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/revature/hatshop/ui/LoginMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/revature/hatshop/ui/LoginMenu.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/revature/hatshop/ui/MainMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/revature/hatshop/ui/MainMenu.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/revature/hatshop/ui/OrderMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/revature/hatshop/ui/OrderMenu.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/revature/hatshop/daos/OrderDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/revature/hatshop/daos/OrderDAO.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/revature/hatshop/models/Order.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/revature/hatshop/models/Order.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/revature/hatshop/ui/LoginMenu.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/revature/hatshop/ui/LoginMenu.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/revature/hatshop/ui/MainMenu.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/revature/hatshop/ui/MainMenu.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -55,14 +50,14 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "last_opened_file_path": "C:/Users/nicky/revGit/Weekly-Coding-Challenges/week2/problem1"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/nicky/revGit/Weekly-Coding-Challenges/week2/problem1&quot;
   }
-}]]></component>
+}</component>
   <component name="RunManager">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.revature.hatshop.Main" />

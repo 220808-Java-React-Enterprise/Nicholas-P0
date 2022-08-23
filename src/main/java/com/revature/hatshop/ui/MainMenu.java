@@ -42,21 +42,8 @@ public class MainMenu implements IMenu {
                         break;
                     case "2":
                         System.out.println("Order Menu");
-//
-                            //if order is already placed
-                        if (new OrderDAO().isCurrentPlaced(user)){
-                            //create new order
-                            Order cOrder = new Order(String.valueOf(Integer.parseInt(new OrderDAO().getMax(user))+1), user.getId());
-                        }else{
-                            //load existing order
-                            Order cOrder = new Order(String.valueOf(Integer.parseInt(new OrderDAO().getMax(user))), user.getId());
-                        }
-
-                            //If order is not placed load existing order
-
-                        Order cOrder = new Order(user.getId(), user.getId());
-
-                        additems: {
+                        Order cOrder = new OrderDAO().loadNewestCart(user);
+                        ordermenu: {
                             while(true){
                                 System.out.println("[1] Add Item");
                                 System.out.println("[2] View Order");
@@ -78,13 +65,11 @@ public class MainMenu implements IMenu {
                                         break;
                                     case "x":
 
-                                        break additems;
+                                        break ordermenu;
 
                                 }
                             }
                         }
-
-
                         break;
                     case "4":
                         System.out.println(new ItemDAO().getAll());

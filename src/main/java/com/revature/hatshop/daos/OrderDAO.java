@@ -15,17 +15,6 @@ import java.util.List;
 
 public class OrderDAO implements CrudDAO<Order> {
 
-
-//    public static String newOrderID(User user) {
-//        try(Connection con = ConnectionFactory.getInstance().getConnection()){
-//            PreparedStatement ps = con.prepareStatement("SELECT * FROM order WHERE id=(SELECT max(id)) AND WHERE user_id=(?)");
-//            ResultSet rs = ps.executeQuery();
-//        } catch (SQLException e) {
-//            throw new RuntimeException(e);
-//        }
-//        return (user.getId() +
-//    }
-
     @Override
     public void save(Order obj) throws IOException {
 
@@ -51,13 +40,25 @@ public class OrderDAO implements CrudDAO<Order> {
         return null;
     }
 
+    public void updateOrder(Order obj){
+        try(Connection con = ConnectionFactory.getInstance().getConnection()){
+            PreparedStatement ps =con.prepareStatement("UPDATE orders SET dt = ? , total = ? , state = ? where orders.id = (select MAX(orders.id) FROM orders where orders.userid = ?)");
+            ps.setString(1,obj.getDt());
+            ps.setString(2,obj.getState());
+            ps.setString(3,obj.getUser_id());
+        } catch (SQLException e) {
+            throw new RuntimeException("update broken");
+        }
+    }
+
     public void createOrder(Order obj){
         try (Connection con = ConnectionFactory.getInstance().getConnection()) {
-            PreparedStatement ps = con.prepareStatement("INSERT INTO users (id, user_id, dt, total) VALUES (?, ?, ?, ?)");
+            PreparedStatement ps = con.prepareStatement("INSERT INTO orders (id, userid, dt, total, state) VALUES (?, ?, ?, ?, ?)");
             ps.setString(1, obj.getId());
             ps.setString(2, obj.getUser_id());
             ps.setString(3, obj.getDt());
             ps.setString(4, obj.getTotal());
+            ps.setString(5, obj.getState());
 
             ps.executeUpdate();
         } catch (SQLException e) {
@@ -65,14 +66,17 @@ public class OrderDAO implements CrudDAO<Order> {
         }
     }
 
-    public boolean isCurrentPlaced(User user) {
+    public Order loadNewestCart(User user) {
         try (Connection con = ConnectionFactory.getInstance().getConnection()) {
-            PreparedStatement ps = con.prepareStatement("SELECT MAX() FROM orders WHERE user_id = ?");
+            PreparedStatement ps = con.prepareStatement("select * from orders where orders.id = (select MAX(orders.id) FROM orders where orders.userid = ?)");
             ps.setString(1,user.getId());
             ResultSet rs = ps.executeQuery();
-            if (rs.getString("state") == "CART"){
-                return true;
-            }else{return false;}
+            rs.next();
+            if (rs.getString("state").equals("CART")){
+                return new Order(rs.getString("id"), rs.getString("userid"),rs.getString("dt"),rs.getString("total"),rs.getString("state"));
+            }else{
+                return new Order(String.valueOf(rs.getInt("id")+1), rs.getString("userid"),rs.getString("dt"),rs.getString("total"),rs.getString("state"));
+            }
 
         } catch (SQLException e) {
             throw new InvalidSQLException("An error occurred when tyring to reach the database. Failed trying to determine if current order has been placed.");
