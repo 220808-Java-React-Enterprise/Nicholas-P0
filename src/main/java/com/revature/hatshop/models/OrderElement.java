@@ -1,75 +1,71 @@
 package com.revature.hatshop.models;
 
 public class OrderElement {
-    public String getId() {
-        return id;
+    private String orderId;
+    private String userId;
+
+    private String itemId;
+    private String qty;
+    private String price;
+
+
+
+    public OrderElement(String orderId, String userId, String itemId, String qty, String price) {
+        this.orderId = orderId;
+        this.userId = userId;
+        this.itemId = itemId;
+        this.qty = qty;
+        this.price = price;
     }
 
-    public void setId(String id) {
-        this.id = id;
+    public String getItemId() {
+        return itemId;
     }
 
-    public String getOrder_id() {
-        return order_id;
+    public void setItemId(String itemId) {
+        this.itemId = itemId;
     }
 
-    public void setOrder_id(String order_id) {
-        this.order_id = order_id;
+    public String getOrderId() {
+        return orderId;
     }
 
-    public String getItem_id() {
-        return item_id;
+    public void setOrderId(String orderId) {
+        this.orderId = orderId;
     }
 
-    public void setItem_id(String item_id) {
-        this.item_id = item_id;
+    public String getUserId() {
+        return userId;
     }
 
-    public String getQuantity() {
-        return quantity;
+    public void setUserId(String userId) {
+        this.userId = userId;
     }
 
-    public void setQuantity(String quantity) {
-        this.quantity = quantity;
+    public String getQty() {
+        return qty;
     }
 
-    public String getPrice_n() {
-        return price_n;
+    public void setQty(String qty) {
+        this.qty = qty;
     }
 
-    public void setPrice_n(String price_n) {
-        this.price_n = price_n;
+    public String getPrice() {
+        return price;
     }
 
-    private String id;
-    private String order_id;
-    private String item_id;
-    private String quantity = "0";
-    private String price_n;
-
-    public OrderElement(String order_id, String item_id, String quantity) {
-
-        this.order_id = order_id;
-        this.item_id = item_id;
-        this.quantity = quantity;
-
-
-    }
-
-    public OrderElement(String id, String order_id, String item_id, String quantity) {
-        this.id = id;
-        this.order_id = order_id;
-        this.item_id = item_id;
-        this.quantity = quantity;
+    public void setPrice(String price) {
+        this.price = price;
     }
 
     @Override
     public String toString() {
         return "OrderElement{" +
-//                "id='" + id + '\'' +
-//                ", order_id='" + order_id + '\'' +
-                ", item_id='" + item_id + '\'' +
-                ", quantity='" + quantity + '\'' + "\n" +
+                "orderId='" + orderId + '\'' +
+                ", userId='" + userId + '\'' +
+                ", itemId='" + itemId + '\'' +
+                ", qty='" + qty + '\'' +
+                ", price='" + price + '\'' +
                 '}';
     }
 }

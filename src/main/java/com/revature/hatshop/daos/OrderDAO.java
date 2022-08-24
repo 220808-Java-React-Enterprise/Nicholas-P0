@@ -5,6 +5,7 @@ import com.revature.hatshop.models.Order;
 import com.revature.hatshop.models.User;
 import com.revature.hatshop.utils.custom_exceptions.InvalidSQLException;
 import com.revature.hatshop.utils.database.ConnectionFactory;
+import com.sun.org.apache.xpath.internal.operations.Or;
 
 import java.io.IOException;
 import java.sql.Connection;
@@ -16,8 +17,20 @@ import java.util.List;
 public class OrderDAO implements CrudDAO<Order> {
 
     @Override
-    public void save(Order obj) throws IOException {
+    public void save(Order obj) {
+        try(Connection con = ConnectionFactory.getInstance().getConnection()){
+            PreparedStatement ps = con.prepareStatement("INSERT INTO orders (id, userid, dt, total, state, location) VALUES (?, ?, ?, ?, ?, ?)");
+            ps.setString(1, obj.getId());
+            ps.setString(2, obj.getUserid());
+            ps.setString(3, obj.getDt());
+            ps.setString(4, obj.getTotal());
+            ps.setString(5, obj.getState());
+            ps.setString(6, obj.getLocation());
+            ps.executeUpdate();
 
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     @Override
@@ -32,6 +45,24 @@ public class OrderDAO implements CrudDAO<Order> {
 
     @Override
     public Order getById(String id) {
+        try(Connection con = ConnectionFactory.getInstance().getConnection()){
+            PreparedStatement ps = con.prepareStatement("select * from orders where orders.id = (select MAX(orders.id) FROM orders where orders.userid = ?)");
+            ps.setString(1,id);
+            ResultSet rs = ps.executeQuery();
+            while(rs.next()){
+                return new Order(rs.getString("id"),rs.getString("userid"),rs.getString("dt"),rs.getString("total"),rs.getString("state"),rs.getString("location"));
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return null;
+    }
+
+    public Order getByUsername(String id) {
+        return null;
+    }
+    
+    public Order getByStore(String id){
         return null;
     }
 
@@ -40,60 +71,6 @@ public class OrderDAO implements CrudDAO<Order> {
         return null;
     }
 
-    public void updateOrder(Order obj){
-        try(Connection con = ConnectionFactory.getInstance().getConnection()){
-            PreparedStatement ps =con.prepareStatement("UPDATE orders SET dt = ? , total = ? , state = ? where orders.id = (select MAX(orders.id) FROM orders where orders.userid = ?)");
-            ps.setString(1,obj.getDt());
-            ps.setString(2,obj.getState());
-            ps.setString(3,obj.getUser_id());
-        } catch (SQLException e) {
-            throw new RuntimeException("update broken");
-        }
-    }
-
-    public void createOrder(Order obj){
-        try (Connection con = ConnectionFactory.getInstance().getConnection()) {
-            PreparedStatement ps = con.prepareStatement("INSERT INTO orders (id, userid, dt, total, state) VALUES (?, ?, ?, ?, ?)");
-            ps.setString(1, obj.getId());
-            ps.setString(2, obj.getUser_id());
-            ps.setString(3, obj.getDt());
-            ps.setString(4, obj.getTotal());
-            ps.setString(5, obj.getState());
-
-            ps.executeUpdate();
-        } catch (SQLException e) {
-            throw new InvalidSQLException("An error occurred when tyring to save to the database.");
-        }
-    }
-
-    public Order loadNewestCart(User user) {
-        try (Connection con = ConnectionFactory.getInstance().getConnection()) {
-            PreparedStatement ps = con.prepareStatement("select * from orders where orders.id = (select MAX(orders.id) FROM orders where orders.userid = ?)");
-            ps.setString(1,user.getId());
-            ResultSet rs = ps.executeQuery();
-            rs.next();
-            if (rs.getString("state").equals("CART")){
-                return new Order(rs.getString("id"), rs.getString("userid"),rs.getString("dt"),rs.getString("total"),rs.getString("state"));
-            }else{
-                return new Order(String.valueOf(rs.getInt("id")+1), rs.getString("userid"),rs.getString("dt"),rs.getString("total"),rs.getString("state"));
-            }
-
-        } catch (SQLException e) {
-            throw new InvalidSQLException("An error occurred when tyring to reach the database. Failed trying to determine if current order has been placed.");
-        }
-//        return false;
-    }
-
-    public String getMax(User user) {
-        try (Connection con = ConnectionFactory.getInstance().getConnection()) {
-            PreparedStatement ps = con.prepareStatement("SELECT MAX() FROM orders WHERE user_id = ?");
-            ps.setString(1,user.getId());
-            ResultSet rs = ps.executeQuery();
-            return rs.getString(1);
-
-
-        } catch (SQLException e) {
-            throw new InvalidSQLException("An error occurred when tyring to reach the database. Could not retrieve the most recent order");
-        }
+    public void placeOrder(Order byId) {
     }
 }

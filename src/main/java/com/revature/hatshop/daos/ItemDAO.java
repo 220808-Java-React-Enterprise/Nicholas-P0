@@ -14,7 +14,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ItemDAO implements CrudDAO<Item> {
-
     @Override
     public void save(Item obj) throws IOException {
 
@@ -32,35 +31,40 @@ public class ItemDAO implements CrudDAO<Item> {
 
     @Override
     public Item getById(String id) {
-        try (Connection con = ConnectionFactory.getInstance().getConnection()) {
-            PreparedStatement ps = con.prepareStatement("SELECT * FROM item WHERE id = ?");
-            ps.setString(1, id);
+
+        return null;
+    }
+
+    public String getNameById(String s){
+        try(Connection con = ConnectionFactory.getInstance().getConnection()){
+            PreparedStatement ps = con.prepareStatement("SELECT name FROM item WHERE id = ?");
+            ps.setString(1, s);
             ResultSet rs = ps.executeQuery();
-
-            if (rs.next()) {
-                return new Item(rs.getString("id"), rs.getString("name"), rs.getString("price"));
+            while(rs.next()){
+                return rs.getString("name");
             }
-
         } catch (SQLException e) {
-            throw new InvalidSQLException("An error occurred when tyring to save to the database.");
+            throw new RuntimeException(e);
         }
         return null;
     }
 
     @Override
     public List<Item> getAll() {
-        List<Item> items = new ArrayList<>();
-        try (Connection con = ConnectionFactory.getInstance().getConnection()) {
-            PreparedStatement ps = con.prepareStatement("SELECT * FROM item");
-            ResultSet rs = ps.executeQuery();
+        return null;
+    }
 
-            while (rs.next()) {
-                Item item_n = new Item(rs.getString("id"), rs.getString("name"), rs.getString("price"));
-                items.add(item_n);
+    public String getPrice(String itemId) {
+        try(Connection con = ConnectionFactory.getInstance().getConnection()){
+            PreparedStatement ps = con.prepareStatement("SELECT price FROM item WHERE id = ?");
+            ps.setString(1,itemId);
+            ResultSet rs = ps.executeQuery();
+            while(rs.next()){
+                return rs.getString(1);
             }
         } catch (SQLException e) {
-            throw new InvalidSQLException("An error occurred when tyring to save to the database.");
+            throw new RuntimeException(e);
         }
-        return items;
+        return null;
     }
 }

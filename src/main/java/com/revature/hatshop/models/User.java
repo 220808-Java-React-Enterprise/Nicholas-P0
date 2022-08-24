@@ -8,6 +8,16 @@ public class User {
 
     private String email = "DEFAULT";
 
+    public String getLocation() {
+        return location;
+    }
+
+    public void setLocation(String location) {
+        this.location = location;
+    }
+
+    private String location = "NONE";
+
     public String getEmail() {
         return email;
     }
@@ -25,12 +35,13 @@ public class User {
         this.username = username;
         this.password = password;
     }
-    public User(String id, String username, String password, String role, String email) {
+    public User(String id, String username, String password, String role, String email, String location) {
         this.id = id;
         this.username = username;
         this.password = password;
         this.email = email;
         this.role = role;
+        this.location = location;
     }
 
     public User(String id, String username, String password, String role) {

@@ -15,25 +15,13 @@ public class UserDAO implements CrudDAO<User> {
     @Override
     public void save(User obj) {
         try (Connection con = ConnectionFactory.getInstance().getConnection()) {
-            PreparedStatement ps = con.prepareStatement("INSERT INTO users (id, username, password, role, email) VALUES (?, ?, ?, ?, ?)");
+            PreparedStatement ps = con.prepareStatement("INSERT INTO users (id, username, password, role, email, location) VALUES (?, ?, ?, ?, ?, ?)");
             ps.setString(1, obj.getId());
             ps.setString(2, obj.getUsername());
             ps.setString(3, obj.getPassword());
             ps.setString(4, obj.getRole());
             ps.setString(5, obj.getEmail());
-            ps.executeUpdate();
-        } catch (SQLException e) {
-            throw new InvalidSQLException("An error occurred when tyring to save to the database.");
-        }
-    }
-    public void saveItem(User obj) {
-        try (Connection con = ConnectionFactory.getInstance().getConnection()) {
-            PreparedStatement ps = con.prepareStatement("INSERT INTO users (id, username, password, role, email) VALUES (?, ?, ?, ?, ?)");
-            ps.setString(1, obj.getId());
-            ps.setString(2, obj.getUsername());
-            ps.setString(3, obj.getPassword());
-            ps.setString(4, obj.getRole());
-            ps.setString(5, obj.getEmail());
+            ps.setString(6, obj.getLocation());
             ps.executeUpdate();
         } catch (SQLException e) {
             throw new InvalidSQLException("An error occurred when tyring to save to the database.");
@@ -58,7 +46,7 @@ public class UserDAO implements CrudDAO<User> {
             ResultSet rs = ps.executeQuery();
 
             if (rs.next()) {
-                return new User(rs.getString("id"), rs.getString("username"), rs.getString("password"), rs.getString("role"), rs.getString("email"));
+                return new User(rs.getString("id"), rs.getString("username"), rs.getString("password"), rs.getString("role"), rs.getString("email"),rs.getString("location"));
             }
 
         } catch (SQLException e) {
@@ -111,7 +99,7 @@ public class UserDAO implements CrudDAO<User> {
             ResultSet rs = ps.executeQuery();
 
             if (rs.next())
-                return new User(rs.getString("id"), rs.getString("username"), rs.getString("password"), rs.getString("role"), rs.getString("email"));
+                return new User(rs.getString("id"), rs.getString("username"), rs.getString("password"), rs.getString("role"), rs.getString("email"),rs.getString("location"));
         } catch (SQLException e) {
             throw new InvalidSQLException("An error occurred when tyring to save to the database.");
         }
@@ -125,7 +113,7 @@ public class UserDAO implements CrudDAO<User> {
             ResultSet rs = ps.executeQuery();
 
             if (rs.next())
-                return new User(rs.getString("id"), rs.getString("username"), rs.getString("password"), rs.getString("role"), rs.getString("email"));
+                return new User(rs.getString("id"), rs.getString("username"), rs.getString("password"), rs.getString("role"), rs.getString("email"),rs.getString("location"));
         } catch (SQLException e) {
             throw new InvalidSQLException("An error occurred when tyring to save to the database.");
         }

@@ -1,12 +1,15 @@
 package com.revature.hatshop.ui;
 
 import com.revature.hatshop.daos.OrderDAO;
+import com.revature.hatshop.daos.StoreDAO;
 import com.revature.hatshop.daos.UserDAO;
 import com.revature.hatshop.models.Order;
+import com.revature.hatshop.models.Store;
 import com.revature.hatshop.models.User;
 import com.revature.hatshop.services.UserService;
 import com.revature.hatshop.utils.custom_exceptions.InvalidUserException;
 
+import java.util.List;
 import java.util.Scanner;
 import java.util.UUID;
 
@@ -40,7 +43,6 @@ public class LoginMenu implements IMenu {
                     case "2":
                         User user = signup();
                         userService.register(user);
-                        new OrderDAO().createOrder(new Order("1",user.getId()));
                         new MainMenu(user, new UserService(new UserDAO())).start();
                         break;
                     case "x":
@@ -87,6 +89,7 @@ public class LoginMenu implements IMenu {
         String password = "";
         String password2 = "";
         String email = "";
+        String location = "";
         User user;
         Scanner scan = new Scanner(System.in);
 
@@ -146,15 +149,38 @@ public class LoginMenu implements IMenu {
                     }
                 }
 
+                locationExit:
+                {
+                    while (true) {
+
+                        System.out.println("\nPlease select the id of the closest store location");
+
+                        List<Store> stores = new StoreDAO().getAll();
+                        for (Store n: stores){
+                            System.out.println("["+n.getId()+"]....................." + n.getLocation());
+
+                        }
+                        location= scan.nextLine();
+                        for (Store n: stores){
+                            if (location.equals(n.getId())){
+                                break locationExit;
+                            }
+                        }
+                        System.out.println("Not a valid Input");
+
+                    }
+                }
+
                confirmExit: {
                    while (true) {
                        System.out.println("\nIs this correct (y/n):");
-                       System.out.println("Username: " + username + "\nPassword: " + password+ "\nEmail: " + email);
+                       System.out.println("Username: " + username + "\nPassword: " + password+ "\nEmail: " + email + "\nLocation: " + new StoreDAO().getById(location).getLocation());
                        System.out.print("\nEnter: ");
 
                        switch (scan.nextLine().toLowerCase()) {
                            case "y":
-                               user = new User(UUID.randomUUID().toString(), username, password, "DEFAULT", email);
+                               user = new User(UUID.randomUUID().toString(), username, password, "DEFAULT", email, location);
+                               new OrderDAO().save(new Order("1", user.getId(), "0000", "0.00", "CART", location));
                                return user;
                            case "n":
                                System.out.println("\nRestarting...");
