@@ -22,7 +22,8 @@ In this presentation I will be demonstrating the functionality of my store, whic
 - View User Orders
 
 ## ERD
-![alt text](https://github.com/220808-Java-React-Enterprise/Nicholas-P0/blob/test-branch/images/updatedERD.png)
+![alt text](https://github.com/220808-Java-React-Enterprise/Nicholas-P0/blob/0776b41904c6af579ea573708371060d403886e9/images/updatedERD.png)
+
 
 ## Technologies
 - Core language: Java 8
