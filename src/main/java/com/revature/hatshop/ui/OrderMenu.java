@@ -1,9 +1,6 @@
 package com.revature.hatshop.ui;
 
-import com.revature.hatshop.daos.ItemDAO;
-import com.revature.hatshop.daos.OrderDAO;
-import com.revature.hatshop.daos.OrderElementDAO;
-import com.revature.hatshop.daos.StoreDAO;
+import com.revature.hatshop.daos.*;
 import com.revature.hatshop.models.*;
 import com.revature.hatshop.services.OrderService;
 
@@ -87,9 +84,7 @@ public class OrderMenu implements IMenu{
         order = new Order(String.valueOf(Integer.valueOf(order.getId())+1), user.getId(), "0000", "0.00", "CART", user.getLocation());
         new OrderDAO().save(order);
         order.setOrderElements(new ArrayList<>());
-    }
-
-    private void viewPlaced() {
+        store = new Store(user.getLocation());
 
     }
 

@@ -3,6 +3,7 @@ package com.revature.hatshop.daos;
 import com.revature.hatshop.models.Inventory;
 import com.revature.hatshop.utils.database.ConnectionFactory;
 
+import javax.naming.ldap.PagedResultsResponseControl;
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -53,5 +54,20 @@ public class InventoryDOA implements CrudDAO<Inventory>{
             throw new RuntimeException(e);
         }
 //        return null;
+    }
+
+    public String getInvQuantity(String itemid, String location){
+        try (Connection con = ConnectionFactory.getInstance().getConnection()){
+            PreparedStatement ps = con.prepareStatement("SELECT qty FROM inventory WHERE itemid = ? and location = ?");
+            ps.setString(1, itemid);
+            ps.setString(2, location);
+            ResultSet rs = ps.executeQuery();
+            while(rs.next()){
+                return rs.getString("qty");
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return null;
     }
 }

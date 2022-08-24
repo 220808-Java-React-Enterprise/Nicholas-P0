@@ -5,34 +5,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3e0fcb3e-c700-47d5-b3c6-95adc232a7e2" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__junit_junit_4_13_1.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__net_bytebuddy_byte_buddy_1_12_13.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__net_bytebuddy_byte_buddy_agent_1_12_13.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_checkerframework_checker_qual_3_5_0.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_hamcrest_hamcrest_core_1_3.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_mockito_mockito_all_1_10_19.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_mockito_mockito_core_4_7_0.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_objenesis_objenesis_3_2.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_postgresql_postgresql_42_4_2.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/revature/hatshop/daos/InventoryDOA.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/revature/hatshop/daos/InventoryDOA.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/revature/hatshop/daos/OrderDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/revature/hatshop/daos/OrderDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/revature/hatshop/daos/OrderElementDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/revature/hatshop/daos/OrderElementDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/revature/hatshop/models/Order.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/revature/hatshop/models/Order.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/revature/hatshop/services/OrderService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/revature/hatshop/services/OrderService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/revature/hatshop/ui/AdminMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/revature/hatshop/ui/AdminMenu.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/revature/hatshop/ui/MainMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/revature/hatshop/ui/MainMenu.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/revature/hatshop/ui/OrderMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/revature/hatshop/ui/OrderMenu.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/revature/hatshop/daos/InventoryDOA.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/revature/hatshop/daos/InventoryDOA.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/revature/hatshop/daos/OrderDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/revature/hatshop/daos/OrderDAO.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/revature/hatshop/daos/OrderElementDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/revature/hatshop/daos/OrderElementDAO.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/revature/hatshop/models/Order.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/revature/hatshop/models/Order.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/revature/hatshop/services/OrderService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/revature/hatshop/services/OrderService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/revature/hatshop/ui/AdminMenu.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/revature/hatshop/ui/AdminMenu.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/revature/hatshop/ui/MainMenu.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/revature/hatshop/ui/MainMenu.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/revature/hatshop/ui/OrderMenu.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/revature/hatshop/ui/OrderMenu.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/com/revature/hatshop/services/UserServiceTest.class" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -52,6 +33,13 @@
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="useMavenConfig" value="true" />
+      </MavenGeneralSettings>
+    </option>
+  </component>
   <component name="ProjectId" id="2DlG2JaIn3WU5VAUxXgYI9ds1Vf" />
   <component name="ProjectLevelVcsManager">
     <ConfirmationsSetting value="1" id="Add" />
@@ -60,16 +48,16 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "project.structure.last.edited": "Project",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2"
   }
-}</component>
+}]]></component>
   <component name="RunManager">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.revature.hatshop.Main" />

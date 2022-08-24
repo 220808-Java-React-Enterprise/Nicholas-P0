@@ -2,6 +2,7 @@ package com.revature.hatshop.daos;
 
 import com.revature.hatshop.models.Item;
 import com.revature.hatshop.models.Order;
+import com.revature.hatshop.models.OrderElement;
 import com.revature.hatshop.models.User;
 import com.revature.hatshop.utils.custom_exceptions.InvalidSQLException;
 import com.revature.hatshop.utils.database.ConnectionFactory;
@@ -80,6 +81,20 @@ public class OrderDAO implements CrudDAO<Order> {
             ps.executeUpdate();
         } catch (SQLException e) {
             throw new RuntimeException(e);
+        }
+        for (OrderElement n: ord.getOrderElements()){
+            try(Connection con = ConnectionFactory.getInstance().getConnection()){
+                PreparedStatement ps = con.prepareStatement("UPDATE inventory SET qty = ? WHERE itemid = ? and location = ? " );
+//                System.out.println(String.valueOf(Integer.valueOf(new InventoryDOA().getInvQuantity(n.getItemId(), new UserDAO().getById(n.getUserId()).getLocation())) - Integer.valueOf(n.getQty()))
+//                        +" --- " + n.getItemId() + " --- " + (new UserDAO().getById(n.getUserId())).getLocation());
+                ps.setString(1, String.valueOf(Integer.valueOf(new InventoryDOA().getInvQuantity(n.getItemId(), new UserDAO().getById(n.getUserId()).getLocation())) - Integer.valueOf(n.getQty())));
+                ps.setString(2,n.getItemId());
+                ps.setString(3, (new UserDAO().getById(n.getUserId())).getLocation());
+
+                ps.executeUpdate();
+            } catch (SQLException e) {
+                throw new RuntimeException(e);
+            }
         }
     }
     public static List<Order> getPlaced(User user) {
