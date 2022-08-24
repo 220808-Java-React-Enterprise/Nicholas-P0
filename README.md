@@ -2,24 +2,30 @@
 
 ## Overwiew
 
-In This project I will be demonstrating the functionality of my store, which sells hats. 
-It is called hatstore.
+In this presentation I will be demonstrating the functionality of my store, which sells hats. 
 
 ## Core Functionality
 
-- Create user profiles to create shopping carts and edit 
-
-## Models
-
-- Inventory
-- Item
-- Order
-- OrderElement
-- Store
-- User
+### User
+- Create a profile
+- Add Items to shopping Cart
+  - Add new items
+  - merge duplicate items and prices
+- Checkout cart and update store inventory
+- View available Inventory at selected store
+- View previous Orders
+### Admin
+#### To Do
+- Restock inventory
+- Change User Role
+- View Store Orders
+- View User Orders
 
 ## ERD
+![alt text](https://github.com/220808-Java-React-Enterprise/Nicholas-P0/blob/test-branch/images/updatedERD.png)
 
-## Features to Implement
+## Technologies
+- Core language: Java 8
+- Dependancy Manager: Apache Maven
+- Database: PostreAQL
 
-- Better UI

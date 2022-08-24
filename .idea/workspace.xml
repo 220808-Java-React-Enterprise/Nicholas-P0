@@ -5,15 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3e0fcb3e-c700-47d5-b3c6-95adc232a7e2" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/revature/hatshop/daos/InventoryDOA.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/revature/hatshop/daos/InventoryDOA.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/revature/hatshop/daos/OrderDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/revature/hatshop/daos/OrderDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/revature/hatshop/ui/AdminMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/revature/hatshop/ui/AdminMenu.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/revature/hatshop/ui/OrderMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/revature/hatshop/ui/OrderMenu.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/revature/hatshop/daos/InventoryDOA.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/revature/hatshop/daos/InventoryDOA.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/revature/hatshop/daos/OrderDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/revature/hatshop/daos/OrderDAO.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/revature/hatshop/ui/OrderMenu.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/revature/hatshop/ui/OrderMenu.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
