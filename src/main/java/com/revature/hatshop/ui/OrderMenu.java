@@ -1,10 +1,14 @@
 package com.revature.hatshop.ui;
 
 import com.revature.hatshop.daos.ItemDAO;
+import com.revature.hatshop.daos.OrderDAO;
+import com.revature.hatshop.daos.OrderElementDAO;
 import com.revature.hatshop.daos.StoreDAO;
 import com.revature.hatshop.models.*;
 import com.revature.hatshop.services.OrderService;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 public class OrderMenu implements IMenu{
@@ -33,8 +37,8 @@ public class OrderMenu implements IMenu{
                 System.out.println("[1] View current order");
                 System.out.println("[2] Add items to Order");
                 System.out.println("[3] Remove items from order");
-                System.out.println("[4] View available stock");
-                System.out.println("[5] View Placed Orders");
+                System.out.println("[4] Place Order");
+                System.out.println("[5] View Inventory");
                 System.out.println("[x] Exit");
                 switch (scan.nextLine()){
                     case "1":   //View current order
@@ -42,17 +46,18 @@ public class OrderMenu implements IMenu{
                         break;
                     case "2":   //Add Items
                         addItems(scan);
+                        updateElement();
                         break;
                     case "3":   //Remove Items
                         removeItems();
+                    case "4":   //Place Order
+                        submitOrder();
                         break;
-                    case "4":   //View available Items
+                    case "5":   //View available Items
                         viewItems();
                         break;
-                    case "5":   //View Placed Orders
-                        viewPlaced();
-                        break;
                     case "x":
+                        updateElement();
                         break ordermenu;
                     default:
                         System.out.println("Not a Valid input.");
@@ -60,6 +65,28 @@ public class OrderMenu implements IMenu{
                 }
             }
         }
+    }
+
+    private void updateElement(){
+        for(OrderElement n: order.getOrderElements()){
+            if (new OrderElementDAO().exists(n)){//checking if entry exists
+                // update row
+                System.out.println("Updating Entry");
+                new OrderElementDAO().update(n);
+            }else{
+                // insert row
+                System.out.println("Creating New Entry");
+                new OrderElementDAO().insert(n);
+            }
+        }
+
+    }
+    private void submitOrder() {
+//        for ()
+        new OrderDAO().placeOrder(order);
+        order = new Order(String.valueOf(Integer.valueOf(order.getId())+1), user.getId(), "0000", "0.00", "CART", user.getLocation());
+        new OrderDAO().save(order);
+        order.setOrderElements(new ArrayList<>());
     }
 
     private void viewPlaced() {
@@ -111,7 +138,7 @@ public class OrderMenu implements IMenu{
                         qItem = scan.nextLine();
                         for (Inventory n : store.getStoreInventory()) {
                             if (n.getItemid().equals(aItem) && Integer.valueOf(n.getQty()) >= Integer.valueOf(qItem)) {
-                                System.out.println(n.getQty() + " is greater than " + qItem);
+//                                System.out.println(n.getQty() + " is greater than " + qItem);
                                 ;
                                 break qtycheck;
                             }
@@ -128,16 +155,19 @@ public class OrderMenu implements IMenu{
 
             }
         }
-        System.out.println(order.getOrderElements());
+//        System.out.println(order.getOrderElements());
     }
 
     private void viewOrder(){
+        System.out.println("id"+ "     " + "item" + "     " + "count" + "     " + "subtotal");
+        Double total = 0.0;
+        for (OrderElement n: order.getOrderElements()){
+            System.out.println(n.getItemId()+ " --- " + new ItemDAO().getNameById(n.getItemId()) + " --- " + n.getQty() + " --- " + n.getPrice());
+            total += Double.valueOf(n.getPrice());
+        }
+        System.out.println();
+        System.out.println("Total: $" + total);
 
-        // show this.order with format...
-        //  (item no)....(item name)....(quantity)....(price)
-        //  (item no)....(item name)....(quantity)....(price)
-        //  (item no)....(item name)....(quantity)....(price)
-        //
 
     }
 }

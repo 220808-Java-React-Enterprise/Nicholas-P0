@@ -6,8 +6,14 @@ import com.revature.hatshop.daos.UserDAO;
 import com.revature.hatshop.models.Order;
 import com.revature.hatshop.models.OrderElement;
 import com.revature.hatshop.models.User;
+import com.revature.hatshop.utils.database.ConnectionFactory;
+import com.sun.org.apache.xpath.internal.operations.Or;
 
 import java.io.IOException;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -38,6 +44,8 @@ public class OrderService {
         }
         return oe;
     }
+
+
 
     public void createNewOrder(String usr) throws IOException {
         orderDAO.save(orderDAO.getById(usr));

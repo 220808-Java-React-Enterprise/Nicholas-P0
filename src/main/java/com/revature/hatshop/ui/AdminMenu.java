@@ -23,17 +23,15 @@ public class AdminMenu implements IMenu {
         exit: {
             while (true) {
                 System.out.println("\nMain menu " + user.getUsername() + "!");
-                System.out.println("[1] Display Email");
-                System.out.println("[2] Give another user admin privileges");
-                System.out.println("[3] Take away user admin privileges");
-                System.out.println("[4] Delete User [FOREVER]");
+                System.out.println("[1] Inventory Menu");
+                System.out.println("[2] Show store order history");
+                System.out.println("[3] Show user order history");
                 System.out.println("[x] Sign out");
                 System.out.print("\nEnter: ");
 
                 switch (scan.nextLine()) {
                     case "1":
-//                        System.out.println("Hello?");
-                        System.out.println("\nEmail: " + user.getEmail()+ "\n");
+
                         break;
                     case "2":
                         addAdmin: {

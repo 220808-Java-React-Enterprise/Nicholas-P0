@@ -12,6 +12,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 public class OrderDAO implements CrudDAO<Order> {
@@ -71,6 +72,30 @@ public class OrderDAO implements CrudDAO<Order> {
         return null;
     }
 
-    public void placeOrder(Order byId) {
+    public void placeOrder(Order ord) {
+        try(Connection con = ConnectionFactory.getInstance().getConnection()){
+            PreparedStatement ps = con.prepareStatement("UPDATE orders SET state = 'PLACED' WHERE orders.id = (select MAX(orders.id) FROM orders where orders.userid = ?) and userid = ?" );
+            ps.setString(1,ord.getUserid());
+            ps.setString(2,ord.getUserid());
+            ps.executeUpdate();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
     }
+    public static List<Order> getPlaced(User user) {
+        List<Order> orderList= new ArrayList<>();
+        try(Connection con = ConnectionFactory.getInstance().getConnection()){
+            PreparedStatement ps = con.prepareStatement("select * from orders where userid = ? and state = 'PLACED'");
+            ps.setString(1, user.getId());
+            ResultSet rs = ps.executeQuery();
+            while(rs.next()){
+                orderList.add(new Order(rs.getString("id"),rs.getString("userid"),rs.getString("dt"),rs.getString("total"),rs.getString("state"),rs.getString("location"),false));
+            }
+            return orderList;
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+
 }

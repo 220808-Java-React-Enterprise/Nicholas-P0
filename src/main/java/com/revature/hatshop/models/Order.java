@@ -43,6 +43,18 @@ public class Order {
         }
     }
 
+    public Order(String id, String userid, String dt, String total, String state, String location, Boolean isNew) {
+        this.id = id;
+        this.userid = userid;
+        this.dt = dt;
+        this.total = total;
+        this.state = state;
+        this.location = location;
+
+
+        this.orderElements = new OrderElementDAO().getPlaced(id,userid);
+
+    }
 
 
     public String getId() {
